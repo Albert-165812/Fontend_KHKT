@@ -9,7 +9,9 @@ export const Post_frame = (title,content)=>{
         "data_base64": content,
       })
       .then(function (response) {
-        TexttoSpeech(response.data['text_detect'])
+        if(response.data['text_detect'] !== null){
+          TexttoSpeech(response.data['text_detect'])
+        }
         console.log(response.data['text_detect'])
         return response.data['text_detect']
       })

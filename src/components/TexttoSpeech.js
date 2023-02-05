@@ -5,9 +5,9 @@ export const TexttoSpeech = (text)=>{
         const utterThis = new SpeechSynthesisUtterance(ourText)
         utterThis.rate = 1
         utterThis.pitch = 1
-        utterThis.lang="Vn"
+        utterThis.lang="vn"
         synth.speak(utterThis)
       } else {
         console.log("Web Speech API not supported :-(")   
       } 
-}
+} 

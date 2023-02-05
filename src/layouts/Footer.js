@@ -1,15 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import "../static/style/Footer.css"
 const Footer = () => {
   return (
-    <div className='FOOTER'>
-      <center>
-        <span>
-          Design by: Nhom KHKT
-        </span>
-      </center>
+    <div className="FOOTER">
+      
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

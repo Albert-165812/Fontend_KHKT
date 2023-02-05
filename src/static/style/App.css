@@ -33,14 +33,14 @@ body {
   align-items: center;
   padding: 8px 0;
   margin: 2px 0;
-  height: 64px;
+  height: 124px;
   background-color: aliceblue;
 }
 .page_Home{
-  height: 100%;
+  /* height: 100%;
   width: 100%;
   max-width: 100vw;
-  min-height: 76vh;
+  min-height: 76vh; */
   display: flex;
   justify-content: center;
   align-items: center;

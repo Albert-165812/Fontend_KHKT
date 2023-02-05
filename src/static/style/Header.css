@@ -1,0 +1,6 @@
+.HEADER{
+    background-image: url("../image/background_header.jpg");
+    background-position:unset;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
