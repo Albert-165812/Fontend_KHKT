@@ -20,6 +20,7 @@
     "react-webcam": "^7.0.1",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://albert-165812.github.io/Fontend_KHKT/",
   "proxy": "http://192.168.1.56:6868",
   "scripts": {
     "predeploy": "npm run build",
