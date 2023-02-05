@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import {Handle_msg} from "./handlers/Handle_msg"
+import { TexttoSpeech } from './components/TexttoSpeech'
 const root = ReactDOM.createRoot(document.getElementById('root'));
+Handle_msg()
 root.render(
   <React.StrictMode>
-    <App />
+  {TexttoSpeech("Chào bạn đây là trang chủ")}
+    <App/>
   </React.StrictMode>
 );
 
