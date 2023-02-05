@@ -16,9 +16,9 @@ function App() {
         <Header/>
           <div className="main">
             <Routes>
-              <Route path='/Web_final_khkt/' exact element={Page_home()} />
-              <Route path='/Web_final_khkt/Page_1' exact element={Page_detect()} />
-              <Route path='/Web_final_khkt/Page_2' exact element={Page_lesson()} />
+              <Route path='/Fontend_KHKT/' exact element={Page_home()} />
+              <Route path='/Fontend_KHKT/Page_1' exact element={Page_detect()} />
+              <Route path='/Fontend_KHKT/Page_2' exact element={Page_lesson()} />
             </Routes>
           </div>
         <Footer/>

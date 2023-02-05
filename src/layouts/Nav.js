@@ -21,7 +21,7 @@ const Nav = (title) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item btn btn-sm btn-outline-success">
-              <Link className="nav-link active" aria-current="page" to='/Web_final_khkt/'>
+              <Link className="nav-link active" aria-current="page" to='/Fontend_KHKT/'>
                 Trang Home
               </Link>
             </li>
