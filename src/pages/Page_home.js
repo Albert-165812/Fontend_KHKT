@@ -8,7 +8,7 @@ const Page_home = () => {
         <div className="box">
           <button type="button" className="btn btn--home btn-dark">
             <Link
-              to="/Page_1"
+              to="/Fontend_KHKT/Page_1"
               onClick={() => {
                 console.log("this is a page 1");
                 TexttoSpeech("Đây là trang 1")
@@ -20,7 +20,7 @@ const Page_home = () => {
         <div className="box">
           <button type="button" className="btn btn--home btn-dark">
             <Link
-              to="/Page_2"
+              to="/Fontend_KHKT/Page_2"
               onClick={() => {
                 console.log("this is a page 2");
                 TexttoSpeech("Đây là trang 2")
