@@ -1,5 +1,5 @@
 import axios from "axios"
-import {TexttoSpeech} from "../components/TexttoSpeech"
+import {TexttoSpeech} from "../TexttoSpeech/TexttoSpeech"
 export const Post_axios = (adrr,title,content)=>{
     
 }

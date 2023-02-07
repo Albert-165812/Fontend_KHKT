@@ -1,7 +1,7 @@
 import React from 'react'
-import VideoStream from '../components/Video_cam'
-import Nav from '../layouts/Nav'
-const Page_detect = () => {
+import VideoStream from '../Camera/Video_cam'
+import Nav from '../layouts/Nav/Nav'
+const PAGE_DETECT = () => {
   return (
     <div className='page page--detect'> 
       {Nav("This is the first")}
@@ -12,4 +12,4 @@ const Page_detect = () => {
   )
 }
 
-export default Page_detect
+export default PAGE_DETECT

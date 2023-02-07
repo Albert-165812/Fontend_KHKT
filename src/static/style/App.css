@@ -18,52 +18,24 @@ video {
 body {
   min-height: 100vh;
 }
-.app{
+html {
+  font-size: 62.5%; /* => 1 rem == 10px */
+  font-family: 'Roboto', sans-serif;
+}
+.APP {
+  position: relative;
   max-width: 100vw;
-  min-height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+}
+/* Create many use share */
+.row {
+  max-width: 100vw;
+  width: 100%;
+  display: block;
+}
+.col {
   display: flex;
   flex-direction: column;
-}
-.main {
-  flex-grow: 1;
-}
-.HEADER,.FOOTER{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 0;
-  margin: 2px 0;
-  height: 124px;
-  background-color: aliceblue;
-}
-.page_Home{
-  /* height: 100%;
-  width: 100%;
-  max-width: 100vw;
-  min-height: 76vh; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.page_Home>center{
-  height: 60vh;
-  width: 100vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.btn--home{
-  max-width: 280px;
-  max-height: 200px;
-  min-width: 200px;
-  min-height: 120px;
-
-}
-.btn--home>a{
-  color: aliceblue;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 2rem;
-  width: 100% !important;
-  height: 100% !important;
 }

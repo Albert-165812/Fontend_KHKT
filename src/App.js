@@ -1,34 +1,29 @@
-import '../src/static/style/App.css';
-import * as React from 'react';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Header from './layouts/Header';
-import Footer from './layouts/Footer';
-import Page_home from './pages/Page_home';
-import Page_detect from './pages/Page_detect';
-import Page_lesson from './pages/Page_lesson';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.bundle.min'
-import { TexttoSpeech } from './components/TexttoSpeech';
+import "../src/static/style/App.css";
+import * as React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Footer from "./components/layouts/Footer/Footer";
+import PAGE_HOME from "./components/pages/PAGE_HOME";
+import PAGE_LESSON from "./components/pages/PAGE_LESSON";
+import PAGE_DETECT from "./components/pages/PAGE_DETECT";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+import "./static/style/_root.css"
 function App() {
   return (
-    <div className='app' onLoad={()=>{
-      TexttoSpeech("Chào bạn đây là trang chủ")
-      console.log("Hello")
-    }
-      }>
+    <div
+      className="APP">
       <Router>
-        <Header/>
-          <div className="main">
-            <Routes>
-              <Route path='/Fontend_KHKT/' exact element={Page_home()} />
-              <Route path='/Fontend_KHKT/Page_1' exact element={Page_detect()} />
-              <Route path='/Fontend_KHKT/Page_2' exact element={Page_lesson()} />
-            </Routes>
-          </div>
-        <Footer/>
+        <div className="MAIN">
+          <Routes>
+            <Route path="/Fontend_KHKT/" exact element={<PAGE_HOME/>} />
+            <Route path="/Fontend_KHKT/Page_1" exact element={<PAGE_DETECT/>} />
+            <Route path="/Fontend_KHKT/Page_2" exact element={<PAGE_LESSON/>} />
+          </Routes>
+        </div>
+        <Footer />
       </Router>
     </div>
-  )
+  );
 }
 
 export default App;

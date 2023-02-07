@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { TexttoSpeech } from "../components/TexttoSpeech";
-const Page_home = () => {
+import { TexttoSpeech } from "../TexttoSpeech/TexttoSpeech";
+import Header from "../layouts/Header/Header";
+const PAGE_HOME = () => {
+  useEffect(()=>{
+  TexttoSpeech("Chào bạn đây là trang chủ")
+  },[])
   return (
     <div className="page_Home" onLoad={()=>{
       console.log("Home")
     }}>
+    <Header/>
       <center>
         <div className="box">
           <button type="button" className="btn btn--home btn-dark">
@@ -36,4 +41,4 @@ const Page_home = () => {
   );
 };
 
-export default Page_home;
+export default PAGE_HOME;
