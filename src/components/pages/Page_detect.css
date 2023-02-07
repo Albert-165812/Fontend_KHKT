@@ -1,0 +1,20 @@
+.page--detect{
+    height: 100% !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+center{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box_video{
+    width: 58% !important;
+    height: auto;
+    margin: auto;
+}

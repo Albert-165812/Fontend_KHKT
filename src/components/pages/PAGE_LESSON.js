@@ -1,6 +1,7 @@
 import React, { useEffect} from "react";
 import Nav from "../layouts/Nav/Nav";
 import Lesson from "../Lesson/Lesson";
+import "./page_lesson.css"
 const PAGE_LESSON = () => {
   useEffect(()=>{
     console.log("hello")

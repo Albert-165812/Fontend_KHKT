@@ -15,7 +15,7 @@ const VideoStream = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div>
+    <div className='box_video'>
       <Webcam ref={webcamRef} />
     </div>
   );

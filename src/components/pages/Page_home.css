@@ -1,0 +1,33 @@
+.page_home{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.page_home::before{
+    content: "";
+    position: fixed;
+    top: 200px;
+    /* background-color: aqua; */
+    background-image: url("./img/logospkt-small.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 164px;
+    height: 164px;
+    border-radius: 16px;
+    z-index: -1;
+}
+.btn_page-home{
+    min-width: 200px;
+    min-height: 120px;
+    border-radius: 20px !important;
+    background-color:  var(--color_gray-1) !important;
+    font-size: 2rem !important;
+    box-shadow: 0 8px 10px var(--color_gray-0);
+    font-weight: bold !important;
+}
+.btn_page-home:hover{
+    background-color: var(--color_gray-0);
+}

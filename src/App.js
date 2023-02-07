@@ -2,6 +2,7 @@ import "../src/static/style/App.css";
 import * as React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/layouts/Footer/Footer";
+import Header from "./components/layouts/Header/Header";
 import PAGE_HOME from "./components/pages/PAGE_HOME";
 import PAGE_LESSON from "./components/pages/PAGE_LESSON";
 import PAGE_DETECT from "./components/pages/PAGE_DETECT";
@@ -13,6 +14,7 @@ function App() {
     <div
       className="APP">
       <Router>
+      <Header />
         <div className="MAIN">
           <Routes>
             <Route path="/Fontend_KHKT/" exact element={<PAGE_HOME/>} />

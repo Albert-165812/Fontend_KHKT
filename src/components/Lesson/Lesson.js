@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { next, prev, display } from "../handlers/Handle_btn";
 import { TexttoSpeech } from "../TexttoSpeech/TexttoSpeech";
+import Tapdoc from "./Tapdoc"
+import Lamquen from "./Lamquen"
+import Timvan from "./Timvan"
 const Lesson = () => {
   const [lessons, setLessons] = useState([]);
   const [title, settitle] = useState([]);
@@ -42,6 +45,9 @@ const Lesson = () => {
             );
           })}
         </select>
+        {Tapdoc(tapdoc)}
+        {Lamquen(lamquen)}
+        {Timvan(timvan)}
       </div>
     );
   }
