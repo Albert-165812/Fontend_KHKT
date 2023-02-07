@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { TexttoSpeech } from "../components/TexttoSpeech";
 const Page_home = () => {
   return (
-    <div className="page_Home">
+    <div className="page_Home" onLoad={()=>{
+      console.log("Home")
+    }}>
       <center>
         <div className="box">
           <button type="button" className="btn btn--home btn-dark">

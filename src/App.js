@@ -8,10 +8,14 @@ import Page_detect from './pages/Page_detect';
 import Page_lesson from './pages/Page_lesson';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min'
-
+import { TexttoSpeech } from './components/TexttoSpeech';
 function App() {
   return (
-    <div className='app'>
+    <div className='app' onLoad={()=>{
+      TexttoSpeech("Chào bạn đây là trang chủ")
+      console.log("Hello")
+    }
+      }>
       <Router>
         <Header/>
           <div className="main">
