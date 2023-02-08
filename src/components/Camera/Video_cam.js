@@ -15,8 +15,13 @@ const VideoStream = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className='box_video'>
-      <Webcam ref={webcamRef} />
+    <div className='box_video' style={{"padding":"16px 0"}}>
+      <div className="container-fluid text-center">
+        <h1>Nhận dạng <span className="glyphicon glyphicon-camera"></span></h1>
+      </div>
+      <center className="container-fluid text-center" style={{"margin-top": "1%"}}>
+      <Webcam ref={webcamRef} className="img-fluid img-thumbnail" style={{"outline": "solid 2px black","width":"50vw","max-width":"580px"}}/>
+      </center>
     </div>
   );
 };

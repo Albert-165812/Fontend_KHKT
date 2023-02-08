@@ -21,7 +21,7 @@
     "react-webcam": "^7.0.1",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "http://192.168.1.72:6868/",
+  "proxy": "http://192.168.1.56:6868/",
   "homepage": "https://albert-165812.github.io/Fontend_KHKT/",
   "lint": "eslint lint --color src -f ./node_modules/eslint-friendly-formatter src/ tests/unit/__mocks__/ --ext .json --ext .js -c .eslintrc.js",
   "scripts": {
