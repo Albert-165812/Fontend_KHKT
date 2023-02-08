@@ -1,65 +1,77 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { next, prev, display } from "../handlers/Handle_btn";
-import { TexttoSpeech } from "../TexttoSpeech/TexttoSpeech";
-import Tapdoc from "./Tapdoc"
-import Lamquen from "./Lamquen"
-import Timvan from "./Timvan"
+import "./lesson.css";
 const Lesson = () => {
-  const [lessons, setLessons] = useState([]);
-  const [title, settitle] = useState([]);
-  const [lamquen, setlamquen] = useState([]);
-  const [tapdoc, settapdoc] = useState([]);
-  const [timvan, settimvan] = useState([]);
-  const [id_curr, setid_curr] = useState([]);
-  const [state, setState] = useState(false);
-  // khoi tao data
+  const [state_get_id, Set_state_get_id] = useState(false);
+  const [list_lesson, setList_lesson] = useState([]);
+  const [position_curr, setPosition_curr] = useState(0);
+  const [list_study,Setlist_study] = useState([])
+  const get_data_st = async (id) => {
+    let Response = await axios.get("/data");
+    let data = await Response.data;
+    await Setlist_study(data["study"])
+    return "done";
+  };
   useEffect(() => {
-    axios
-      .get("/ids")
-      .then(function (response) {
-        setLessons(response.data["lessons"]);
-        settitle(response.data["data"]["title"]);
-        setlamquen(response.data["data"]["lamquen"]);
-        settapdoc(response.data["data"]["tapdoc"]);
-        settimvan(response.data["data"]["timvan"]);
-        setState(true);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
-  if (state) {
-    TexttoSpeech("Đã kết nối với dữ liệu trên server thành công, bạn có thể bắt đầu bài học của mình")
+    if (!state_get_id) {
+      const getid = async () => {
+        let response = await axios.get("/ids");
+        let lessons = await response.data["lessons"];
+        return lessons;
+      };
+      getid()
+        .then((data) => {
+          setList_lesson(data);
+          get_data_st()
+            .then((ms) => {
+              Set_state_get_id(true);
+              console.log(ms);
+            })
+            .catch((err) => console.error(err));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [state_get_id]);
+  const click_next = () => {
+    setPosition_curr(position_curr + 1);
+    if (position_curr >= list_lesson.length-1) setPosition_curr(list_lesson.length-1);
+  };
+  const click_prev = () => {
+    setPosition_curr(position_curr - 1);
+    if (position_curr <= 0) setPosition_curr(0);
+  };
+  if (state_get_id) {
     return (
-      <div>
-        <select name="lessons" id="lessons">
-          {lessons.map((lesson) => {
-            return (
-              <option
-                id={lesson["id"]}
-                key={lesson["id"]}
-                value={lesson["lesson"]}>
-                {lesson["lesson"]}
-              </option>
-            );
-          })}
-        </select>
-        {Tapdoc(tapdoc)}
-        {Lamquen(lamquen)}
-        {Timvan(timvan)}
+      <div className="content_lesson">
+        {console.log(list_lesson[position_curr]["id"])}
+        {console.log("sss",list_study[position_curr])}
+        <span>id: {list_lesson[position_curr]["id"]}</span>
+        <div className="lesson_container">
+          <div className="box_lq">
+            <span>làm quen</span>
+            {list_study[position_curr]["Lamquen"].map((a) => {
+              return (
+                <div key={a.text}>
+                {console.log("zxcvbn")}
+                  <div>{a.text}</div>
+                  <div>{a.img}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <button onClick={click_next}>Next</button>
+        <button onClick={click_prev}>Prev</button>
       </div>
     );
-  }
-  else{
-    TexttoSpeech("Đang kết nối với dữ liệu trên server")
-    return(
+  } else {
+    return (
       <center>
-        <span>
-          Đang Kết nối với dữ liệu trên server...
-        </span>
+        <span>Đang load data</span>
       </center>
-    )
+    );
   }
 };
 

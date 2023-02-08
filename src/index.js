@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Handle_msg} from "./components/handlers/Handle_msg"
 const root = ReactDOM.createRoot(document.getElementById('root'));
-Handle_msg()
 root.render(
     <App/>
 );

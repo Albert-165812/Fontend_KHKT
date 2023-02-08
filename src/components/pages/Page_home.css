@@ -31,3 +31,6 @@
 .btn_page-home:hover{
     background-color: var(--color_gray-0);
 }
+nav{
+    width: 100%;
+}
