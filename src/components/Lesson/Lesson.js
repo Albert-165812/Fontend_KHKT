@@ -68,8 +68,10 @@ const Lesson = () => {
     );
   } else {
     return (
-      <center>
-        <span>Đang load data</span>
+      <center className="preloading">
+          <div id="preload" className="preload-container text-center">
+            <span className="glyphicon glyphicon-repeat preload-icon rotating">Đang tải dữ liệu bài học</span>
+          </div>
       </center>
     );
   }
