@@ -27,8 +27,8 @@ const Nav = (title) => {
               <span
               style={{
                 "display": "flex",
-                "font-size": "1.6rem",
-                "justify-content": "center",
+                "fontSize": "1.6rem",
+                "justifyContent": "center",
                 "alignItems": "center",
                 
               }}>
@@ -44,8 +44,8 @@ const Nav = (title) => {
               <span
               style={{
                 "display": "flex",
-                "font-size": "1.6rem",
-                "justify-content": "center",
+                "fontSize": "1.6rem",
+                "justifyContent": "center",
                 "alignItems": "center",
                 
               }}>
@@ -61,8 +61,8 @@ const Nav = (title) => {
               <span
               style={{
                 "display": "flex",
-                "font-size": "1.6rem",
-                "justify-content": "center",
+                "fontSize": "1.6rem",
+                "justifyContent": "center",
                 "alignItems": "center",
                 
               }}>

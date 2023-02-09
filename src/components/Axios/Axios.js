@@ -10,10 +10,11 @@ export const Post_frame = (title,content)=>{
       })
       .then(function (response) {
         if(response.data['text_detect'] !== null){
-          TexttoSpeech(response.data['text_detect'])
+          if(response.data['text_detect'] !== "no detection"){
+            console.log(response.data['text_detect'])
+            TexttoSpeech(response.data['text_detect'])
+          }
         }
-        console.log(response.data['text_detect'])
-        return response.data['text_detect']
       })
       .catch(function (error) {
         console.log(error);

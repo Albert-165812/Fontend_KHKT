@@ -9,11 +9,13 @@ import PAGE_DETECT from "./components/pages/PAGE_DETECT";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./static/style/_root.css"
+import Socketio from "./components/Socketio/Socketio";
 function App() {
   return (
     <div
       className="APP">
       <Router>
+    <Socketio/>  
       <Header />
         <div className="MAIN">
           <Routes>

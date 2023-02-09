@@ -27,8 +27,8 @@ const PAGE_HOME = () => {
               <span
                 style={{
                   display: "flex",
-                  "font-size": "2rem",
-                  "justify-content": "center",
+                  "fontSize": "2rem",
+                  "justifyContent": "center",
                   alignItems: "center",
                 }}>
                 <h1 className="text-center" style={{ padding: "0 8px 0 0" }}>
@@ -51,8 +51,8 @@ const PAGE_HOME = () => {
               <span
                 style={{
                   display: "flex",
-                  "font-size": "2rem",
-                  "justify-content": "center",
+                  "fontSize": "2rem",
+                  "justifyContent": "center",
                   alignItems: "center",
                 }}>
                 <h1 className="text-center" style={{ padding: "0 8px 0 0" }}>
@@ -72,8 +72,8 @@ const PAGE_HOME = () => {
                 <span
                   style={{
                     display: "flex",
-                    "font-size": "2rem",
-                    "justify-content": "center",
+                    "fontSize": "2rem",
+                    "justifyContent": "center",
                     alignItems: "center",
                   }}>
                   <h1 className="text-center" style={{ padding: "0 8px 0 0" }}>

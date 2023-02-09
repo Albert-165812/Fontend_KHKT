@@ -19,8 +19,8 @@ const VideoStream = () => {
       <div className="container-fluid text-center">
         <h1>Nhận dạng <span className="glyphicon glyphicon-camera"></span></h1>
       </div>
-      <center className="container-fluid text-center" style={{"margin-top": "1%"}}>
-      <Webcam ref={webcamRef} className="img-fluid img-thumbnail" style={{"outline": "solid 2px black","width":"50vw","max-width":"580px"}}/>
+      <center className="container-fluid text-center" style={{"marginTop": "1%"}}>
+      <Webcam ref={webcamRef} className="img-fluid img-thumbnail" style={{"outline": "solid 2px black","width":"50vw","maxWidth":"580px"}}/>
       </center>
     </div>
   );
