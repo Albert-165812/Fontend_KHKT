@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TexttoSpeech } from "../TexttoSpeech/TexttoSpeech";
-import { FaSearch, FaFolder, FaBook } from "react-icons/fa";
+import { FaSearch, FaFolder, FaBook} from "react-icons/fa";
 import "./Page_home.css";
 import Nav from "../layouts/Nav/Nav";
 const PAGE_HOME = () => {
@@ -84,7 +84,8 @@ const PAGE_HOME = () => {
               </Link>
             </div>
           </div>
-        </div>
+          <button onClick={()=>{ window.location.replace('http://localhost:3000/Fontend_KHKT/Page_1');}}>click</button> {/* test replace with win dow*/}
+       </div>
       </div>
     </div>
   );

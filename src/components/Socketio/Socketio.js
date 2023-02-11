@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 
 const Socketio = () => {
   useEffect(() => {
-    const socket = io('http://192.168.1.63:6868');
+    const socket = io('/');
     socket.on('connect', () => {
       console.log('Connected to the server');
     });
@@ -16,6 +16,7 @@ const Socketio = () => {
     socket.on('message_client_web', (msg) => {
         console.log('message_client_web:',msg["content"]);
         // setMessage(msg);
+        
       });
     return () => {
       socket.disconnect();
