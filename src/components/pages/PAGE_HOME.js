@@ -84,7 +84,6 @@ const PAGE_HOME = () => {
               </Link>
             </div>
           </div>
-          <button onClick={()=>{ window.location.replace('http://localhost:3000/Fontend_KHKT/Page_1');}}>click</button> {/* test replace with win dow*/}
        </div>
       </div>
     </div>
