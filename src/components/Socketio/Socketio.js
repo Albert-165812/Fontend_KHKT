@@ -11,6 +11,7 @@ const Socketio = () => {
       console.log("Disconnected from the server");
     });
     socket.on("message_client_web", (msg) => {
+      console.log(msg)
       HandleSocket(msg)
     });
     return () => {
