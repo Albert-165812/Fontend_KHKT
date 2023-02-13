@@ -3,7 +3,7 @@ import axios from "axios";
 import Nav from "../layouts/Nav/Nav";
 import Lesson from "../Lesson/Lesson";
 import "./page_lesson.css";
-import $ from "jquery" 
+// import $ from "jquery";
 const PAGE_LESSON = () => {
   const [ids, Set_ids] = useState([]);
   const [lessons, Set_lessons] = useState([]);
@@ -63,32 +63,31 @@ const PAGE_LESSON = () => {
   if (state_get_data) {
     if (!state_choosen_lesson) {
       // console.log(document.getElementById("list_lesson_choosen").childNodes[0].childNodes[0])
-      console.log($("#list_lesson_choosen")[0].childNodes[0].childNodes[0])
       return (
         <div>
           <Nav />
           <h3> Chọn bài học thôi nào</h3>
-          <ul style={{
-            "display":"flex",
-            "flexWrap":"wrap"
-          }}
-          id="list_lesson_choosen">
-            {ids.map((id,index) => {
+          <ul
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+            }}
+            id="list_lesson_choosen">
+            {ids.map((id, index) => {
               return (
                 <li key={id["id"]}>
                   <button
-                  style={{
-                    "maxWidth":"200px",
-                    "width":"maxContent",
-                    "minWidth":"80px",
-                    "margin":"4px 8px",
-
-                  }}
-                  className = "btn btn-primary"
+                    style={{
+                      maxWidth: "200px",
+                      width: "maxContent",
+                      minWidth: "80px",
+                      margin: "4px 8px",
+                    }}
+                    className="btn btn-primary"
                     onClick={() => {
                       choosen_lesson(id["id"]);
                     }}>
-                    Bài: {index + 1} <br/> {id["lesson"]}
+                    Bài: {index + 1} <br /> {id["lesson"]}
                   </button>
                 </li>
               );
@@ -110,11 +109,26 @@ const PAGE_LESSON = () => {
               height: "100%",
             }}>
             <div style={{ height: "100%" }}>
-              {Lesson(id_curr, position_curr,lesson_curr, lessons[position_curr])}
+              {Lesson(
+                id_curr,
+                position_curr,
+                lesson_curr,
+                lessons[position_curr]
+              )}
             </div>
-            <div style={{ height: "max-content" ,"margin":"8px 4px"}}>
-              <button style={{"margin":"0 4px","padding":"0 4px"}} onClick={click_next}>Next</button>
-              <button style={{"margin":"0 4px","padding":"0 4px"}} onClick={click_prev}>Prev</button>
+            <div style={{ height: "max-content", margin: "8px 4px" }}>
+              <button
+                id="NEXT"
+                style={{ margin: "0 4px", padding: "0 4px" }}
+                onClick={click_next}>
+                Next
+              </button>
+              <button
+                id="PREV"
+                style={{ margin: "0 4px", padding: "0 4px" }}
+                onClick={click_prev}>
+                Prev
+              </button>
             </div>
           </div>
         </div>

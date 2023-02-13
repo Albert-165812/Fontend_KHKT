@@ -66,7 +66,7 @@ const PAGE_HOME = () => {
             <div className="col-sm text-center">
               <Link
                 className="btn btn-primary"
-                to="/Fontend_KHKT/"
+                to="/Fontend_KHKT/Page_3"
                 role="button"
                 style={{ width: "200px", height: "50px" }}>
                 <span

@@ -12,7 +12,7 @@ const Socketio = () => {
     });
     socket.on("message_client_web", (msg) => {
       console.log(msg)
-      HandleSocket(msg)
+      HandleSocket(msg,socket)
     });
     return () => {
       socket.disconnect();
