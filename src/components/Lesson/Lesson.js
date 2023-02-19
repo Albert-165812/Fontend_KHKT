@@ -1,51 +1,110 @@
 /* eslint-disable array-callback-return */
 import React from "react";
-import $ from "jquery"
-const Lesson = (lessons, ids_lesson, id_curr) => {
-  // console.log(lessons, ids_lesson, id_curr);
-  return (
-    <>
-      {ids_lesson.map((i) => {
-        return i["ids"].map((e) => {
-          if (e["id"] === id_curr)
-            return (
-              <div
-                key={i["chuong"]}
-                className="row g-3"
-                style={{ backgroundColor: "#B9F3FC", padding: "0 0 0 16px" }}>
-                <center
-                  className="col-sm-3 text-center"
-                  style={{
-                    outline: "solid 4px black",
-                    borderRadius: "16px",
-                    margin: "auto 0",
-                  }}>
-                  <h1 className="fw-bold chuong_h1" style={{ fontSize: "3rem" }}>
-                    {i["chuong"]}
-                  </h1>
-                </center>
-                <div className="col-sm-9 text-center">
-                  <p className="fw-bold baihoc_p" style={{ fontSize: "3rem" }}>
-                    {e["baihoc"]}
-                  </p>
-                </div>
-              </div>
-            );
-        });
-      })}
-      <div
-        className="lesson_main"
-        style={{ margin: "8px 0 0 0", height: "100%" }}>
-        {lessons.map((chuong) => {
-          let ten_chuong = $(".chuong_h1").text()
-          let ten_baihoc = $(".baihoc_p").text()
-          return chuong["study"].map((baihoc) => {
-
-            console.log(ten_chuong,ten_baihoc)
-          });
-        })}
+import axios from "axios";
+import $ from "jquery";
+const Lesson = (id_curr) => {
+  console.log("ddd", id_curr);
+  axios({
+    method: "post",
+    url: "/data_lesson",
+    data: {
+      id: id_curr,
+    },
+  })
+    .then(function (response) {
+      var Danhvan = response.data["study"]["Danhvan"]["Danhvan"];
+      var Lamquen = response.data["study"]["Lamquen"]["Lamquen"];
+      var Kechuyen = response.data["study"]["Kechuyen"]["Kechuyen"];
+      var Ontap = response.data["study"]["Ontap"]["Ontap"];
+      let state_Danhvan = true;
+      let state_Lamquen = true;
+      let state_Kechuyen = true;
+      let state_Ontap = true;
+      if (Lamquen == null) {
+        state_Lamquen = false;
+      }
+      if (Danhvan == null) {
+        state_Danhvan = false;
+      }
+      if (Kechuyen == null) {
+        state_Kechuyen = false;
+      }
+      if (Ontap == null) {
+        state_Ontap = false;
+      }
+      console.log(state_Danhvan, state_Lamquen, state_Kechuyen, state_Ontap);
+      console.log(Danhvan, Lamquen, Kechuyen, Ontap);
+      
+      var boxLamquen = $(`
+      <div style="padding:6px" class="box_item_display" id="item_Lamquen">
+        Box làm quen
       </div>
-    </>
+      `);
+      var boxDanhvan = $(`
+      <div style="padding:6px" class="box_item_display" id="item_Danhvan">
+        Box Dánh vần
+      </div>
+      `);
+      var boxKechuyen = $(`
+      <div style="padding:6px" class="box_item_display" id="item_Kechuyen">
+        Box Kể chuyện
+      </div>
+      `);
+      var boxOntap = $(`
+      <div style="padding:6px" class="box_item_display" id="item_Ontap">
+        Box Ôn tập
+      </div>
+      `);
+      if (Lamquen) {
+        $("#item_Lamquen").remove();
+        $(boxLamquen).appendTo("#box_display_lesson");
+        Lamquen.map((i,index)=>{
+          var Lamquen = (
+            `
+            <div class="element_lamquen">
+              <span>1</span>
+              <img src="2"/>
+            </div>
+            `
+            )
+            $("#item_Lamquen").append(Lamquen)
+            console.log($(".element_lamquen")[index].childNodes[1])
+        })
+      } else {
+        $("#item_Lamquen").remove();
+      }
+      if (Danhvan) {
+        $("#item_Danhvan").remove();
+        $(boxDanhvan).appendTo("#box_display_lesson");
+      } else {
+        $("#item_Danhvan").remove();
+      }
+      if (Kechuyen) {
+        $("#item_Kechuyen").remove();
+        $(boxKechuyen).appendTo("#box_display_lesson");
+      } else {
+        $("#item_Kechuyen").remove();
+      }
+      if (Ontap) {
+        $("#item_Ontap").remove();
+        $(boxOntap).appendTo("#box_display_lesson");
+      } else {
+        $("#item_Ontap").remove();
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  return (
+    <div
+      id="box_display_lesson"
+      style={{
+        display: "flex",
+        height: "100%",
+        width: "100%",
+        justifyContent: "space-around",
+        alignItems: "center",
+      }}></div>
   );
 };
 

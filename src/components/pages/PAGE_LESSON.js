@@ -7,7 +7,6 @@ import "./page_lesson.css";
 const PAGE_LESSON = () => {
   const [ids, Set_ids] = useState([]);
   const [ids_lesson, Set_ids_ids_lesson] = useState([]);
-  const [lessons, Set_lessons] = useState([]);
   const [state_get_data, Set_state_get_data] = useState(false);
   const [state_choosen_lesson, Set_state_choosen_lesson] = useState(false);
   const [id_curr, Set_id_curr] = useState("");
@@ -16,7 +15,6 @@ const PAGE_LESSON = () => {
     let Response = await axios.get("/data");
     let data = await Response.data;
     await Set_ids(data["list_id"]);
-    await Set_lessons(data["listchuong"]);
     await Set_ids_ids_lesson(data["ids"]);
     return true;
   };
@@ -28,7 +26,6 @@ const PAGE_LESSON = () => {
         Set_position_curr(i);
       }
     }
-    
   };
   const click_next = () => {
     if (position_curr >= ids.length - 1) {
@@ -118,23 +115,23 @@ const PAGE_LESSON = () => {
             })}
           </ul>
           <div style={{ height: "max-content", margin: "8px 4px" }}>
-              <button
-                id="NEXT"
-                style={{ margin: "0 4px", padding: "0 4px" }}
-                onClick={click_next}>
-                Next
-              </button>
-              <button
-                id="PREV"
-                style={{ margin: "0 4px", padding: "0 4px" }}
-                onClick={click_prev}>
-                Prev
-              </button>
-            </div>
+            <button
+              id="NEXT"
+              style={{ margin: "0 4px", padding: "0 4px" }}
+              onClick={click_next}>
+              Next
+            </button>
+            <button
+              id="PREV"
+              style={{ margin: "0 4px", padding: "0 4px" }}
+              onClick={click_prev}>
+              Prev
+            </button>
+          </div>
         </div>
       );
     } else {
-      console.log("positioncurr", position_curr, "idcurr", id_curr);
+      // console.log("positioncurr", position_curr, "idcurr", id_curr);
       return (
         <div
           style={{ height: "100%", display: "flex", flexDirection: "column" }}>
@@ -147,8 +144,48 @@ const PAGE_LESSON = () => {
               flexDirection: "column",
               height: "100%",
             }}>
-            <div style={{ height: "100%","display":"flex","flexDirection":"column" }}>
-              {Lesson(lessons,ids_lesson,id_curr)}
+            <div
+              style={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}>
+              {ids_lesson.map((i) => {
+                return i["ids"].map((e) => {
+                  if (e["id"] === id_curr)
+                    return (
+                      <div
+                        key={i["chuong"]}
+                        className="row g-3"
+                        style={{
+                          backgroundColor: "#B9F3FC",
+                          padding: "0 0 0 16px",
+                        }}>
+                        <center
+                          className="col-sm-3 text-center"
+                          style={{
+                            outline: "solid 4px black",
+                            borderRadius: "16px",
+                            margin: "auto 0",
+                          }}>
+                          <h1
+                            className="fw-bold chuong_h1"
+                            style={{ fontSize: "3rem" }}>
+                            {i["chuong"]}
+                          </h1>
+                        </center>
+                        <div className="col-sm-9 text-center">
+                          <p
+                            className="fw-bold baihoc_p"
+                            style={{ fontSize: "3rem" }}>
+                            {e["baihoc"]}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                });
+              })}
+              {Lesson(id_curr)}
             </div>
             <div style={{ height: "max-content", margin: "8px 4px" }}>
               <button
