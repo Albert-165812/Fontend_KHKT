@@ -34,60 +34,121 @@ const Lesson = (id_curr) => {
       }
       console.log(state_Danhvan, state_Lamquen, state_Kechuyen, state_Ontap);
       console.log(Danhvan, Lamquen, Kechuyen, Ontap);
-      
+
       var boxLamquen = $(`
       <div style="padding:6px" class="box_item_display" id="item_Lamquen">
-        Box làm quen
+        <h3 style="font-size:1.6rem,font-weight:boid">Box làm quen</h3>
       </div>
       `);
       var boxDanhvan = $(`
       <div style="padding:6px" class="box_item_display" id="item_Danhvan">
-        Box Dánh vần
+        <h3 style="font-size:1.6rem,font-weight:boid">Box Dánh vần</h3>
       </div>
       `);
       var boxKechuyen = $(`
       <div style="padding:6px" class="box_item_display" id="item_Kechuyen">
-        Box Kể chuyện
+        <h3 style="font-size:1.6rem,font-weight:boid">Box Kể chuyện</h3>
       </div>
       `);
       var boxOntap = $(`
       <div style="padding:6px" class="box_item_display" id="item_Ontap">
-        Box Ôn tập
+        <h3 style="font-size:1.6rem,font-weight:boid">Box Ôn tập</h3>
       </div>
       `);
       if (Lamquen) {
         $("#item_Lamquen").remove();
         $(boxLamquen).appendTo("#box_display_lesson");
-        Lamquen.map((i,index)=>{
-          var Lamquen = (
-            `
+        Lamquen.map((i, index) => {
+          var Lamquen = `
             <div class="element_lamquen">
-              <span>1</span>
-              <img src="2"/>
+              <span class="element_lamquen-text" ></span>
+              <img class="element_lamquen-img" src=""/>
             </div>
-            `
-            )
-            $("#item_Lamquen").append(Lamquen)
-            console.log($(".element_lamquen")[index].childNodes[1])
-        })
+            `;
+          $("#item_Lamquen").append(Lamquen);
+          document.getElementsByClassName("element_lamquen-text")[
+            index
+          ].innerHTML = i["text"];
+          document.getElementsByClassName("element_lamquen-img")[index].src =
+            i["img"];
+        });
       } else {
         $("#item_Lamquen").remove();
       }
       if (Danhvan) {
         $("#item_Danhvan").remove();
         $(boxDanhvan).appendTo("#box_display_lesson");
+        Danhvan.map((i, index) => {
+          var Danhvan = `
+            <div class="element_Danhvan">
+              <span class="element_Danhvan-text" ></span>
+              <img class="element_Danhvan-img" src=""/>
+            </div>
+            `;
+          $("#item_Danhvan").append(Danhvan);
+          document.getElementsByClassName("element_Danhvan-text")[
+            index
+          ].innerHTML = i["text"];
+          document.getElementsByClassName("element_Danhvan-img")[index].src =
+            i["img"];
+        });
       } else {
         $("#item_Danhvan").remove();
       }
       if (Kechuyen) {
         $("#item_Kechuyen").remove();
         $(boxKechuyen).appendTo("#box_display_lesson");
+        Kechuyen.map((i, index) => {
+          console.log(i);
+          var Kechuyen = `
+            <div class="element_Kechuyen">
+              <span class="element_Kechuyen-title" ></span>
+              <ul id="element_Kechuyen-contentList"></ul>
+            </div>
+            `;
+          $("#item_Kechuyen").append(Kechuyen);
+          document.getElementsByClassName("element_Kechuyen-title")[
+            index
+          ].innerHTML = i["title"];
+          i["content"].map((e, index) => {
+            var content_kechuyen = `
+              <li class="element_Kechuyen-contentItem">
+                <span class="element_Kechuyen-text" ></span>
+                <img class="element_Kechuyen-img" src=""/>
+              </li>
+              `;
+            $("#element_Kechuyen-contentList").append(content_kechuyen);
+            document.getElementsByClassName("element_Kechuyen-text")[
+              index
+            ].innerHTML = e["text"];
+            document.getElementsByClassName("element_Kechuyen-img")[index].src =
+              e["img"];
+          });
+        });
       } else {
         $("#item_Kechuyen").remove();
       }
       if (Ontap) {
         $("#item_Ontap").remove();
         $(boxOntap).appendTo("#box_display_lesson");
+        Ontap.map((i, index) => {
+          var Ontap = `
+          <div class="element_Ontap">
+            <span class="element_Ontap-baihoc"></span>
+            <span class="element_Ontap-noidung"></span>
+            <img class="element_Ontap-img" src=""/>
+          </div>
+          `;
+          $("#item_Ontap").append(Ontap);
+          document.getElementsByClassName("element_Ontap-baihoc")[
+            index
+          ].innerHTML = i["ten_bai_hoc"];
+          document.getElementsByClassName("element_Ontap-noidung")[
+            index
+          ].innerHTML = i["chu_cua_hinh"];
+          document.getElementsByClassName("element_Ontap-img")[index].src =
+            i["img"];
+        });
       } else {
         $("#item_Ontap").remove();
       }
