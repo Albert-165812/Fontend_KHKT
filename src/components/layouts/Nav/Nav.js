@@ -57,7 +57,7 @@ const Nav = (title) => {
               </Link>
             </li>
             <li className="nav-item text-center">
-              <Link className="nav-link" to="/Fontend_KHKT/">
+              <Link className="nav-link" to="/Fontend_KHKT/Page_3">
               <span
               style={{
                 "display": "flex",

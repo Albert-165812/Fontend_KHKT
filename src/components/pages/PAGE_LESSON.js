@@ -6,17 +6,18 @@ import "./page_lesson.css";
 // import $ from "jquery";
 const PAGE_LESSON = () => {
   const [ids, Set_ids] = useState([]);
+  const [ids_lesson, Set_ids_ids_lesson] = useState([]);
   const [lessons, Set_lessons] = useState([]);
   const [state_get_data, Set_state_get_data] = useState(false);
   const [state_choosen_lesson, Set_state_choosen_lesson] = useState(false);
-  const [lesson_curr, Set_lesson_curr] = useState("");
   const [id_curr, Set_id_curr] = useState("");
   const [position_curr, Set_position_curr] = useState(0);
   const get_data = async () => {
     let Response = await axios.get("/data");
     let data = await Response.data;
-    await Set_ids(data["ids"]);
-    await Set_lessons(data["study"]);
+    await Set_ids(data["list_id"]);
+    await Set_lessons(data["listchuong"]);
+    await Set_ids_ids_lesson(data["ids"]);
     return true;
   };
   const choosen_lesson = (id) => {
@@ -25,29 +26,25 @@ const PAGE_LESSON = () => {
     for (let i = 0; i < ids.length; i++) {
       if (ids[i]["id"] === id) {
         Set_position_curr(i);
-        Set_lesson_curr(ids[i]["lesson"]);
       }
     }
+    
   };
   const click_next = () => {
     if (position_curr >= ids.length - 1) {
       Set_position_curr(ids.length - 1);
-      Set_lesson_curr(ids[ids.length - 1]["lesson"]);
       Set_id_curr(ids[ids.length - 1]["id"]);
     } else {
       Set_position_curr(position_curr + 1);
-      Set_lesson_curr(ids[position_curr + 1]["lesson"]);
       Set_id_curr(ids[position_curr + 1]["id"]);
     }
   };
   const click_prev = () => {
     if (position_curr <= 0) {
       Set_position_curr(0);
-      Set_lesson_curr(ids[0]["lesson"]);
       Set_id_curr(ids[0]["id"]);
     } else {
       Set_position_curr(position_curr - 1);
-      Set_lesson_curr(ids[position_curr - 1]["lesson"]);
       Set_id_curr(ids[position_curr - 1]["id"]);
     }
   };
@@ -62,40 +59,82 @@ const PAGE_LESSON = () => {
   }, []);
   if (state_get_data) {
     if (!state_choosen_lesson) {
-      // console.log(document.getElementById("list_lesson_choosen").childNodes[0].childNodes[0])
+      console.log("positioncurr", position_curr, "idcurr", id_curr);
       return (
         <div>
           <Nav />
           <h3> Chọn bài học thôi nào</h3>
           <ul
+            className="list_chuong"
             style={{
               display: "flex",
+              flexDirection: "column",
               flexWrap: "wrap",
-            }}
-            id="list_lesson_choosen">
-            {ids.map((id, index) => {
+            }}>
+            {ids_lesson.map((i) => {
               return (
-                <li key={id["id"]}>
-                  <button
+                <li key={i["chuong"]}>
+                  <span
                     style={{
-                      maxWidth: "200px",
-                      width: "maxContent",
-                      minWidth: "80px",
-                      margin: "4px 8px",
-                    }}
-                    className="btn btn-primary"
-                    onClick={() => {
-                      choosen_lesson(id["id"]);
+                      fontSize: "1.6rem",
+                      fontWeight: "bold",
+                      display: "flex",
+                      justifyContent: "center",
+                      margin: "8px",
                     }}>
-                    Bài: {index + 1} <br /> {id["lesson"]}
-                  </button>
+                    {i["chuong"]}
+                  </span>
+                  <ul
+                    className="list_baihoc"
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      alignContent: "center",
+                      justifyContent: "center",
+                      flexWrap: "wrap",
+                    }}>
+                    {i["ids"].map((i) => {
+                      return (
+                        <li key={i["id"]}>
+                          <button
+                            style={{
+                              maxWidth: "200px",
+                              width: "maxContent",
+                              minWidth: "80px",
+                              margin: "4px 8px",
+                            }}
+                            className="btn btn-primary"
+                            onClick={() => {
+                              choosen_lesson(i["id"]);
+                            }}>
+                            <span>{i["baihoc"]}</span>
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </li>
               );
             })}
           </ul>
+          <div style={{ height: "max-content", margin: "8px 4px" }}>
+              <button
+                id="NEXT"
+                style={{ margin: "0 4px", padding: "0 4px" }}
+                onClick={click_next}>
+                Next
+              </button>
+              <button
+                id="PREV"
+                style={{ margin: "0 4px", padding: "0 4px" }}
+                onClick={click_prev}>
+                Prev
+              </button>
+            </div>
         </div>
       );
     } else {
+      console.log("positioncurr", position_curr, "idcurr", id_curr);
       return (
         <div
           style={{ height: "100%", display: "flex", flexDirection: "column" }}>
@@ -108,13 +147,8 @@ const PAGE_LESSON = () => {
               flexDirection: "column",
               height: "100%",
             }}>
-            <div style={{ height: "100%" }}>
-              {Lesson(
-                id_curr,
-                position_curr,
-                lesson_curr,
-                lessons[position_curr]
-              )}
+            <div style={{ height: "100%","display":"flex","flexDirection":"column" }}>
+              {Lesson(lessons,ids_lesson,id_curr)}
             </div>
             <div style={{ height: "max-content", margin: "8px 4px" }}>
               <button
