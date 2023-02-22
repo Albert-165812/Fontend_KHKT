@@ -5,6 +5,8 @@ import axios from "axios";
 import Nav from "../layouts/Nav/Nav";
 import Lesson from "../Lesson/Lesson";
 import "./page_lesson.css";
+import $ from "jquery"
+import { TexttoSpeech } from "../TexttoSpeech/TexttoSpeech";
 const PAGE_LESSON = () => {
   const [ids, Set_ids] = useState([]);
   const [ids_lesson, Set_ids_ids_lesson] = useState([]);
@@ -115,7 +117,7 @@ const PAGE_LESSON = () => {
                               minWidth: "80px",
                               margin: "4px 8px",
                             }}
-                            className="btn btn-primary"
+                            className="btn btn-primary btn_choose_lessons"
                             onClick={() => {
                               choosen_lesson(i["id"]);
                             }}>
@@ -192,6 +194,7 @@ const PAGE_LESSON = () => {
                           <p
                             className="fw-bold baihoc_p"
                             style={{ fontSize: "3rem" }}>
+                            {/* {TexttoSpeech("Bạn đang học "+i["chuong"]+e["baihoc"])} */}
                             {e["baihoc"]}
                           </p>
                         </div>

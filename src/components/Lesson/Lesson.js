@@ -175,7 +175,8 @@ const Lesson = (id_curr) => {
         width: "100%",
         justifyContent: "space-around",
         alignItems: "center",
-      }}></div>
+      }}>
+      </div>
   );
 };
 

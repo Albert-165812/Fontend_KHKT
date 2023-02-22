@@ -1,8 +1,13 @@
 import $ from "jquery";
-export const HandleSocket = (msg, socket) => {
-  var count_next = 0;
-  let state_choosen_lesson = false;
-  let state_curr_lesson = false;
+var count_next = 0;
+let state_choosen_lesson = false;
+let state_curr_lesson = false;
+
+export const HandleSocket = (msg, socket,ids) => {
+  if($(".list_chuong")[0] === undefined){
+    state_choosen_lesson = true;
+    state_curr_lesson = true;
+  }
   const emit_local = (task, place, content) => {
     let data_msg = {
       task: task,
@@ -21,39 +26,32 @@ export const HandleSocket = (msg, socket) => {
         case "Page_lesson":
           if (!state_choosen_lesson) {
             if (msg["content"] === "NEXT") {
-              if (
-                count_next >=
-                $("#list_lesson_choosen")[0].childNodes.length - 1
-              )
+              if(count_next >=ids[0].length-1){
+                count_next = ids[0].length -1
+              }
+              else{
                 count_next += 1;
+              } 
             }
-            if (msg["content"] === "ENTER") {
-              console.log(msg["content"]);
-              $("#list_lesson_choosen")[0].childNodes[
-                count_next
-              ].childNodes[0].click();
+            if (msg["content"] === "BACK") {
+              if(count_next === 0){
+                count_next = 0;
+              }
+              else count_next -= 1;
+
+            }
+            if (msg["content"] === "E") {
+              $(".btn_choose_lessons")[count_next].childNodes[0].click();
               state_choosen_lesson = true;
-              emit_local(
-                "TextoAlertWeb",
-                "Page_lesson",
-                "state_choosen_lesson_done"
-              );
+              state_curr_lesson = true
               count_next = 0;
             }
           }
-          if (!state_curr_lesson) {
+          else if (state_curr_lesson) {
             if (msg["content"] === "NEXT") {
-              if (
-                count_next >=
-                $("#list_lesson_choosen")[0].childNodes.length - 1
-              )
-                count_next = $("#list_lesson_choosen")[0].childNodes.length - 1;
-              count_next += 1;
               $("#NEXT")[0].click();
             }
             if (msg["content"] === "BACK") {
-              if (count_next <= 0) count_next = 0;
-              count_next -= 1;
               $("#PREV")[0].click();
             }
           }
@@ -69,7 +67,7 @@ export const HandleSocket = (msg, socket) => {
         case "Home":
           if (msg["content"] === "DETECT")
             window.location.replace("/Fontend_KHKT/Page_1");
-          if (msg["content"] === "LESSON")
+          if (msg["content"] === "LESSONS")
             window.location.replace("/Fontend_KHKT/Page_2");
           break;
         case "Page_detect":
