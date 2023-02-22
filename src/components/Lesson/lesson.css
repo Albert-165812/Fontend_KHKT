@@ -1,0 +1,12 @@
+.element_lamquen,
+.element_Danhvan,
+.element_Kechuyen-contentItem,
+.element_Ontap{
+    background-color: var(--background-boxitem);
+    margin: 8px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+img{
+    border-radius: 8px;
+}

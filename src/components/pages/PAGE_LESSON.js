@@ -1,26 +1,33 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Nav from "../layouts/Nav/Nav";
 import Lesson from "../Lesson/Lesson";
 import "./page_lesson.css";
-// import $ from "jquery";
 const PAGE_LESSON = () => {
   const [ids, Set_ids] = useState([]);
   const [ids_lesson, Set_ids_ids_lesson] = useState([]);
   const [state_get_data, Set_state_get_data] = useState(false);
   const [state_choosen_lesson, Set_state_choosen_lesson] = useState(false);
   const [id_curr, Set_id_curr] = useState("");
-  const [position_curr, Set_position_curr] = useState(0);
-  let config={
-  headers: {
-    'Access-Control-Allow-Credentials' : true,
-    'Access-Control-Allow-Origin':'*',
-    'Access-Control-Allow-Methods':'GET',
-    'Access-Control-Allow-Headers':'application/json',
-  },
+  const [position_curr, Set_position_curr] = useState(0); 
+  const [time_set_error, Set_time_set_error] = useState(0);
+  let config = {
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET",
+      "Access-Control-Allow-Headers": "application/json",
+    },
+  };
+  const Time = ()=>{
+    setTimeout(() => {
+      Set_time_set_error(time_set_error + 1)
+    }, 1000);
   }
   const get_data = async () => {
-    let Response = await axios.get("/data",config);
+    let Response = await axios.get("/data", config);
     let data = await Response.data;
     await Set_ids(data["list_id"]);
     await Set_ids_ids_lesson(data["ids"]);
@@ -139,7 +146,6 @@ const PAGE_LESSON = () => {
         </div>
       );
     } else {
-      // console.log("positioncurr", position_curr, "idcurr", id_curr);
       return (
         <div
           style={{ height: "100%", display: "flex", flexDirection: "column" }}>
@@ -214,15 +220,44 @@ const PAGE_LESSON = () => {
       );
     }
   } else {
-    return (
-      <center className="preloading">
-        <div id="preload" className="preload-container text-center">
-          <span className="glyphicon glyphicon-repeat preload-icon rotating">
-            Đang tải dữ liệu bài học
+    Time()
+    if(time_set_error<10){
+      return (
+        <center className="preloading">
+          <div id="preload" className="preload-container text-center" style={{"display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"}}>
+            <div className="lds-default">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <span className="glyphicon glyphicon-repeat preload-icon rotating">
+              Đang tải dữ liệu bài học
+            </span>
+          </div>
+        </center>
+      );
+    }
+    else{
+      return(
+        <center style={{"display":"flex","flexDirection":"column"}}>
+          <h1>
+            Hiện tại đang lỗi kết nối với Server
+          </h1>
+          <span style={{"color":"red","fontWeight":"bold","fontSize":"1.6rem"}}>
+            -SERVER IS ERROR-
           </span>
-        </div>
-      </center>
-    );
+        </center>
+      )
+    }
   }
 };
 
