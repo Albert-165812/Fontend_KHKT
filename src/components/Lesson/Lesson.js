@@ -2,11 +2,20 @@
 import React from "react";
 import axios from "axios";
 import $ from "jquery";
+let config={
+  headers: {
+    'Access-Control-Allow-Credentials' : true,
+    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Methods':'GET',
+    'Access-Control-Allow-Headers':'application/json',
+  }
+}
 const Lesson = (id_curr) => {
   console.log("ddd", id_curr);
   axios({
     method: "post",
     url: "/data_lesson",
+    dataType:'jsonp',
     data: {
       id: id_curr,
     },
@@ -33,36 +42,44 @@ const Lesson = (id_curr) => {
         state_Ontap = false;
       }
       console.log(state_Danhvan, state_Lamquen, state_Kechuyen, state_Ontap);
-      console.log(Danhvan, Lamquen, Kechuyen, Ontap);
+      // console.log(Danhvan, Lamquen, Kechuyen, Ontap);
 
       var boxLamquen = $(`
-      <div style="padding:6px" class="box_item_display" id="item_Lamquen">
-        <h3 style="font-size:1.6rem,font-weight:boid">Box làm quen</h3>
+      <div id="box_item_lamquen">
+        <h3 style="font-size:rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Làm quen</h3>
+        <div style="padding:6px;width:100%;height:100%;display:flex;justify-content:space-around;align-items:center" class="box_item_display" id="item_Lamquen">
+        </div>
       </div>
       `);
       var boxDanhvan = $(`
-      <div style="padding:6px" class="box_item_display" id="item_Danhvan">
-        <h3 style="font-size:1.6rem,font-weight:boid">Box Dánh vần</h3>
+      <div id="box_item_danhvan">
+        <h3 style="font-size:rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Dánh vần</h3>
+        <div style="padding:6px;width:100%;height:100%;display:flex;justify-content:space-around;align-items:center" class="box_item_display" id="item_Danhvan">
+        </div>
       </div>
       `);
       var boxKechuyen = $(`
-      <div style="padding:6px" class="box_item_display" id="item_Kechuyen">
-        <h3 style="font-size:1.6rem,font-weight:boid">Box Kể chuyện</h3>
+      <div id="box_item_kechuyen">
+        <h3 style="font-size:rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Kể chuyện</h3>
+        <div style="padding:6px;width:100%;height:100%;display:flex;justify-content:space-around;align-items:center" class="box_item_display" id="item_Kechuyen">
+        </div>
       </div>
       `);
       var boxOntap = $(`
-      <div style="padding:6px" class="box_item_display" id="item_Ontap">
-        <h3 style="font-size:1.6rem,font-weight:boid">Box Ôn tập</h3>
+      <div id="box_item_ontap">
+        <h3 style="font-size:rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Ôn tập</h3> 
+        <div style="padding:6px;width:100%;height:100%;display:flex;justify-content:space-around;align-items:center" class="box_item_display" id="item_Ontap">
+        </div>
       </div>
       `);
       if (Lamquen) {
-        $("#item_Lamquen").remove();
+        $("#box_item_lamquen").remove();
         $(boxLamquen).appendTo("#box_display_lesson");
         Lamquen.map((i, index) => {
           var Lamquen = `
-            <div class="element_lamquen">
-              <span class="element_lamquen-text" ></span>
-              <img class="element_lamquen-img" src=""/>
+            <div class="element_lamquen" style="padding:4px">
+              <img class="element_lamquen-img" style="width:160px; object-fit:center;height:100px" src=""/>
+              <span class="element_lamquen-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:1.6rem" ></span>
             </div>
             `;
           $("#item_Lamquen").append(Lamquen);
@@ -73,16 +90,16 @@ const Lesson = (id_curr) => {
             i["img"];
         });
       } else {
-        $("#item_Lamquen").remove();
+        $("#box_item_lamquen").remove();
       }
       if (Danhvan) {
-        $("#item_Danhvan").remove();
+        $("#box_item_danhvan").remove();
         $(boxDanhvan).appendTo("#box_display_lesson");
         Danhvan.map((i, index) => {
           var Danhvan = `
-            <div class="element_Danhvan">
-              <span class="element_Danhvan-text" ></span>
-              <img class="element_Danhvan-img" src=""/>
+            <div class="element_Danhvan" style="padding:4px">
+              <img class="element_Danhvan-img" style="width:160px; object-fit:center;height:100px" src=""/>
+              <span class="element_Danhvan-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:1.6rem" ></span>
             </div>
             `;
           $("#item_Danhvan").append(Danhvan);
@@ -93,17 +110,17 @@ const Lesson = (id_curr) => {
             i["img"];
         });
       } else {
-        $("#item_Danhvan").remove();
+        $("#box_item_danhvan").remove();
       }
       if (Kechuyen) {
-        $("#item_Kechuyen").remove();
+        $("#box_item_kechuyen").remove();
         $(boxKechuyen).appendTo("#box_display_lesson");
         Kechuyen.map((i, index) => {
           console.log(i);
           var Kechuyen = `
-            <div class="element_Kechuyen">
-              <span class="element_Kechuyen-title" ></span>
-              <ul id="element_Kechuyen-contentList"></ul>
+            <div class="element_Kechuyen" style="padding:4px">
+              <span class="element_Kechuyen-title" style="width:100%; display:flex;align-items:center;justify-content:center;font-weight:600; font-size:2rem"></span>
+              <ul id="element_Kechuyen-contentList" style="display:grid;grid-template-columns: 160px 160px"></ul>
             </div>
             `;
           $("#item_Kechuyen").append(Kechuyen);
@@ -112,9 +129,9 @@ const Lesson = (id_curr) => {
           ].innerHTML = i["title"];
           i["content"].map((e, index) => {
             var content_kechuyen = `
-              <li class="element_Kechuyen-contentItem">
-                <span class="element_Kechuyen-text" ></span>
-                <img class="element_Kechuyen-img" src=""/>
+              <li class="element_Kechuyen-contentItem" style="padding:4px">
+                <img class="element_Kechuyen-img" style="width:160px; object-fit:center;height:100px" src=""/>
+                <span class="element_Kechuyen-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:1.6rem" ></span>
               </li>
               `;
             $("#element_Kechuyen-contentList").append(content_kechuyen);
@@ -126,17 +143,17 @@ const Lesson = (id_curr) => {
           });
         });
       } else {
-        $("#item_Kechuyen").remove();
+        $("#box_item_kechuyen").remove();
       }
       if (Ontap) {
-        $("#item_Ontap").remove();
+        $("#box_item_ontap").remove();
         $(boxOntap).appendTo("#box_display_lesson");
         Ontap.map((i, index) => {
           var Ontap = `
-          <div class="element_Ontap">
-            <span class="element_Ontap-baihoc"></span>
-            <span class="element_Ontap-noidung"></span>
-            <img class="element_Ontap-img" src=""/>
+          <div class="element_Ontap" style="padding:4px">
+            <span class="element_Ontap-baihoc"style="width:100%;display:flex;justify-content:center;align-items:center;font-size:1.6rem"></span>
+            <img class="element_Ontap-img" style="width:160px; object-fit:center;height:100px" src=""/>
+            <span class="element_Ontap-noidung"style="width:100%;display:flex;justify-content:center;align-items:center;font-size:1.6rem"></span>
           </div>
           `;
           $("#item_Ontap").append(Ontap);
@@ -150,7 +167,7 @@ const Lesson = (id_curr) => {
             i["img"];
         });
       } else {
-        $("#item_Ontap").remove();
+        $("#box_item_ontap").remove();
       }
     })
     .catch(function (error) {

@@ -11,8 +11,16 @@ const PAGE_LESSON = () => {
   const [state_choosen_lesson, Set_state_choosen_lesson] = useState(false);
   const [id_curr, Set_id_curr] = useState("");
   const [position_curr, Set_position_curr] = useState(0);
+  let config={
+  headers: {
+    'Access-Control-Allow-Credentials' : true,
+    'Access-Control-Allow-Origin':'*',
+    'Access-Control-Allow-Methods':'GET',
+    'Access-Control-Allow-Headers':'application/json',
+  },
+  }
   const get_data = async () => {
-    let Response = await axios.get("/data");
+    let Response = await axios.get("/data",config);
     let data = await Response.data;
     await Set_ids(data["list_id"]);
     await Set_ids_ids_lesson(data["ids"]);
