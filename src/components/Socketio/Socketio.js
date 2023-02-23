@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect } from "react";
 import io from "socket.io-client";
 import { HandleSocket } from "./HandleSocket";
 import axios from "axios";
@@ -10,7 +10,8 @@ let config = {
     "Access-Control-Allow-Headers": "application/json",
   },
 };
-let ids = []
+let ids = [];
+
 const Socketio = () => {
   const get_data = async () => {
     let Response = await axios.get("/data", config);
@@ -23,19 +24,24 @@ const Socketio = () => {
     socket.on("connect", () => {
       console.log("Connected to the server");
       get_data()
-      .then(msg=>{
-        console.log("Get data from socket: ")
-      })
-      .catch((err) => {
-        console.warn(err);
-      });
+        .then((msg) => {
+          console.log("Get data from socket: ");
+          socket.emit("server_client_local", {
+            task: "Alert_page_curr",
+            place: "none",
+            content: "HOME",
+          });
+        })
+        .catch((err) => {
+          console.warn(err);
+        });
     });
     socket.on("disconnect", () => {
       console.log("Disconnected from the server");
     });
     socket.on("message_client_web", (msg) => {
-      console.log(msg)
-      HandleSocket(msg,socket,ids)
+      console.log(msg);
+      HandleSocket(msg, socket, ids);
     });
     return () => {
       socket.disconnect();

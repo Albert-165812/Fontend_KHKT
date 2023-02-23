@@ -38,7 +38,6 @@ export const HandleSocket = (msg, socket,ids) => {
                 count_next = 0;
               }
               else count_next -= 1;
-
             }
             if (msg["content"] === "E") {
               $(".btn_choose_lessons")[count_next].childNodes[0].click();
@@ -65,11 +64,15 @@ export const HandleSocket = (msg, socket,ids) => {
     case "TexttoControllerLinkWeb":
       switch (msg["place"]) {
         case "Home":
-          if (msg["content"] === "DETECT")
+          if (msg["content"] === "DETECT"){
             window.location.replace("/Fontend_KHKT/Page_1");
-          if (msg["content"] === "LESSONS")
+            count_next = 0
+          }
+          if (msg["content"] === "LESSONS"){
             window.location.replace("/Fontend_KHKT/Page_2");
-          break;
+            count_next = 0
+          }
+            break;
         case "Page_detect":
           break;
         case "Page_lesson":
