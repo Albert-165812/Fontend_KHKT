@@ -39,28 +39,28 @@ const Lesson = (id_curr) => {
 
       var boxLamquen = $(`
       <div id="box_item_lamquen">
-        <h3 style="font-size:rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Làm quen</h3>
+        <h2 style="font-size:3rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Làm quen</h2>
         <div style="padding:6px;width:100%;max-width:860px;height:100%;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap" class="box_item_display" id="item_Lamquen">
         </div>
       </div>
       `);
       var boxDanhvan = $(`
       <div id="box_item_danhvan">
-        <h3 style="font-size:rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Dánh vần</h3>
+        <h2 style="font-size:3rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Dánh vần</h2>
         <div style="padding:6px;width:100%;max-width:860px;height:100%;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap" class="box_item_display" id="item_Danhvan">
         </div>
       </div>
       `);
       var boxKechuyen = $(`
       <div id="box_item_kechuyen" style="padding: 8px 0"> 
-        <h3 style="font-size:rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Kể chuyện</h3>
+        <h2 style="font-size:3rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Kể chuyện</h2>
         <div style="padding:6px;width:100%;max-width:860px;height:100%;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap" class="box_item_display" id="item_Kechuyen">
         </div>
       </div>
       `);
       var boxOntap = $(`
       <div id="box_item_ontap">
-        <h3 style="font-size:rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Ôn tập</h3> 
+        <h2 style="font-size:3rem;font-weight:boid;width:100%;display:flex;align-items:center;justify-content:center">Ôn tập</h2> 
         <div style="width:100%;max-width:860px;height:100%;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap" class="box_item_display" id="item_Ontap">
         </div>
       </div>
@@ -72,15 +72,15 @@ const Lesson = (id_curr) => {
           var Lamquen = `
             <div class="element_lamquen" style="padding:4px">
               <img class="element_lamquen-img" style="width:160px; object-fit:center;height:100px" src=""/>
-              <span class="element_lamquen-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:1.6rem" ></span>
+              <span class="element_lamquen-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:2.4rem" ></span>
             </div>
             `;
           $("#item_Lamquen").append(Lamquen);
           document.getElementsByClassName("element_lamquen-text")[
             index
           ].innerHTML = i["text"];
-          document.getElementsByClassName("element_lamquen-img")[index].src =
-            i["img"];
+          document.getElementsByClassName("element_lamquen-img")[index].src = "/src/image"+
+            i["img"].slice(85,i["img"].length);
         });
       } else {
         $("#box_item_lamquen").remove();
@@ -92,15 +92,15 @@ const Lesson = (id_curr) => {
           var Danhvan = `
             <div class="element_Danhvan" style="padding:4px">
               <img class="element_Danhvan-img" style="width:160px; object-fit:center;height:100px" src=""/>
-              <span class="element_Danhvan-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:1.6rem" ></span>
+              <span class="element_Danhvan-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:2.4rem" ></span>
             </div>
             `;
           $("#item_Danhvan").append(Danhvan);
           document.getElementsByClassName("element_Danhvan-text")[
             index
           ].innerHTML = i["text"];
-          document.getElementsByClassName("element_Danhvan-img")[index].src =
-            i["img"];
+          document.getElementsByClassName("element_Danhvan-img")[index].src = "/src/image"+
+            i["img"].slice(85,i["img"].length);
         });
       } else {
         $("#box_item_danhvan").remove();
@@ -112,7 +112,7 @@ const Lesson = (id_curr) => {
           console.log(i);
           var Kechuyen = `
             <div class="element_Kechuyen" style="padding:4px">
-              <span class="element_Kechuyen-title" style="width:100%; display:flex;align-items:center;justify-content:center;font-weight:600; font-size:2rem; margin:0;padding:4px 0 0 0"></span>
+              <h3 class="element_Kechuyen-title" style="width:100%; display:flex;align-items:center;justify-content:center;font-weight:600; font-size:2rem; margin:0;padding:4px 0 0 0"></h3>
               <ul id="element_Kechuyen-contentList" style="display:grid;grid-template-columns: 200px 200px"></ul>
             </div>
             `;
@@ -122,17 +122,17 @@ const Lesson = (id_curr) => {
           ].innerHTML = i["title"];
           i["content"].map((e, index) => {  
             var content_kechuyen = `
-              <li class="element_Kechuyen-contentItem" style="padding:4px">
+              <li class="element_Kechuyen-contentItem" style="padding:4px;display:flex;flex-direction:column;justify-content:flex-start;align-items:center">
                 <img class="element_Kechuyen-img" style="width:160px; object-fit:center;height:100px" src=""/>
-                <span class="element_Kechuyen-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:1.6rem" ></span>
+                <span class="element_Kechuyen-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:2rem; padding:auto" ></span>
               </li>
               `;
             $("#element_Kechuyen-contentList").append(content_kechuyen);
             document.getElementsByClassName("element_Kechuyen-text")[
               index
             ].innerHTML = e["text"];
-            document.getElementsByClassName("element_Kechuyen-img")[index].src =
-              e["img"];
+            document.getElementsByClassName("element_Kechuyen-img")[index].src = "/src/image"+
+              e["img"].slice(85,e["img"].length);
           });
         });
       } else {
@@ -144,9 +144,9 @@ const Lesson = (id_curr) => {
         Ontap.map((i, index) => {
           var Ontap = `
           <div class="element_Ontap" style="padding:4px">
-            <span class="element_Ontap-baihoc"style="width:100%;display:flex;justify-content:center;align-items:center;font-size:1.6rem"></span>
+            <span class="element_Ontap-baihoc"style="width:100%;display:flex;justify-content:center;align-items:center;font-size:2.4rem"></span>
             <img class="element_Ontap-img" style="width:160px; object-fit:center;height:100px" src=""/>
-            <span class="element_Ontap-noidung"style="width:100%;display:flex;justify-content:center;align-items:center;font-size:1.6rem"></span>
+            <span class="element_Ontap-noidung"style="width:100%;display:flex;justify-content:center;align-items:center;font-size:2.4rem"></span>
           </div>
           `;
           $("#item_Ontap").append(Ontap);
@@ -156,8 +156,8 @@ const Lesson = (id_curr) => {
           document.getElementsByClassName("element_Ontap-noidung")[
             index
           ].innerHTML = i["chu_cua_hinh"];
-          document.getElementsByClassName("element_Ontap-img")[index].src =
-            i["img"];
+          document.getElementsByClassName("element_Ontap-img")[index].src = "/src/image"+
+            i["img"].slice(85,i["img"].length);
         });
       } else {
         $("#box_item_ontap").remove();

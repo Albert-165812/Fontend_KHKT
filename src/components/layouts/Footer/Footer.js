@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <div className="FOOTER">
       <div className="row">
-        <span className="FOOTER_title">Thông tin liên hệ</span>
+        {/* <span className="FOOTER_title">Thông tin liên hệ</span> */}
         <div className="col">
           <div className="FOOTER_content">
             <div className="FOOTER_contact-box-change">

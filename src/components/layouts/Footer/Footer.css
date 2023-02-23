@@ -1,5 +1,5 @@
 .FOOTER {
-  height: max-content;
+  height: min-content;
   width: 100%;
   padding: 8px 4px;
   background-color: var(--color_gray-1);

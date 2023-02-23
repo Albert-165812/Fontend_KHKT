@@ -1,5 +1,6 @@
 import $ from "jquery";
 var count_next = 0;
+var count_text = 0;
 let state_choosen_lesson = false;
 let state_curr_lesson = false;
 
