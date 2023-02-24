@@ -90,7 +90,7 @@ const PAGE_LESSON = () => {
                 <li key={i["chuong"]}>
                   <span
                     style={{
-                      fontSize: "1.6rem",
+                      fontSize: "2.4rem",
                       fontWeight: "bold",
                       display: "flex",
                       justifyContent: "center",
@@ -109,9 +109,10 @@ const PAGE_LESSON = () => {
                     }}>
                     {i["ids"].map((i) => {
                       return (
-                        <li key={i["id"]}>
+                        <li key={i["id"]} style={{"padding":"0 8px"}}>
                           <button
                             style={{
+                              fontSize:"2rem",
                               maxWidth: "200px",
                               width: "maxContent",
                               minWidth: "80px",
