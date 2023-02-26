@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { Axios } from "axios";
 import Nav from "../layouts/Nav/Nav";
 import Lesson from "../Lesson/Lesson";
 import "./page_lesson.css";
@@ -70,6 +70,9 @@ const PAGE_LESSON = () => {
       .catch((err) => {
         console.warn(err);
       });
+      axios.post("/page_current",{
+        "page":"LESSONS"
+      })
   }, []);
   if (state_get_data) {
     if (!state_choosen_lesson) {

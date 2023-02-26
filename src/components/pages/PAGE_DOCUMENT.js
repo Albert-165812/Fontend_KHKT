@@ -1,7 +1,11 @@
 import React from "react";
 import "./Page_document.css";
 import Nav from "../layouts/Nav/Nav";
+import axios from "axios";
 const PAGE_DOCUMENT = () => {
+  axios.post("/page_current",{
+    "page":"DOCUMENT"
+  })
   return (
     <div>
       <Nav />

@@ -1,8 +1,5 @@
 import axios from "axios"
 import {TexttoSpeech} from "../TexttoSpeech/TexttoSpeech"
-export const Post_axios = (adrr,title,content)=>{
-    
-}
 export const Post_frame = (title,content)=>{
     axios.post('/face_detect', {
         "title":title,

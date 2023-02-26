@@ -27,8 +27,8 @@ const Socketio = () => {
         .then((msg) => {
           console.log("Get data from socket: ");
           socket.emit("server_client_local", {
-            task: "Alert_page_curr",
-            place: "none",
+            task: "alertPageCurr",
+            place: "current",
             content: "HOME",
           });
         })
@@ -40,7 +40,7 @@ const Socketio = () => {
       console.log("Disconnected from the server");
     });
     socket.on("message_client_web", (msg) => {
-      console.log(msg);
+      console.log(msg)
       HandleSocket(msg, socket, ids);
     });
     return () => {

@@ -5,8 +5,12 @@ import { TexttoSpeech } from "../TexttoSpeech/TexttoSpeech";
 import { FaSearch, FaFolder, FaBook} from "react-icons/fa";
 import "./Page_home.css";
 import Nav from "../layouts/Nav/Nav";
+import axios from "axios";
 const PAGE_HOME = () => {
   useEffect(() => {
+    axios.post("/page_current",{
+      "page":"HOME"
+    })
     TexttoSpeech("Chào bạn đây là trang chủ");
   }, []);
   return (
