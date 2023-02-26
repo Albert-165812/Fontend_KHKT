@@ -26,11 +26,6 @@ const Socketio = () => {
       get_data()
         .then((msg) => {
           console.log("Get data from socket: ");
-          socket.emit("server_client_local", {
-            task: "alertPageCurr",
-            place: "current",
-            content: "HOME",
-          });
         })
         .catch((err) => {
           console.warn(err);

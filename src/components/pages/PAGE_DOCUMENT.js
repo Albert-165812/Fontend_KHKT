@@ -6,6 +6,9 @@ const PAGE_DOCUMENT = () => {
   axios.post("/page_current",{
     "page":"DOCUMENT"
   })
+  axios.post("/state_choosen",{
+    "state": "don't",
+  })
   return (
     <div>
       <Nav />

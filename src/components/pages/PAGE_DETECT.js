@@ -7,6 +7,9 @@ const PAGE_DETECT = () => {
   axios.post("/page_current",{
     "page":"DETECT"
   })
+  axios.post("/state_choosen",{
+    "state": "don't",
+  })
   return (
     <div className='page page--detect'> 
       {Nav("This is the first")}

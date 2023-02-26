@@ -73,6 +73,9 @@ const PAGE_LESSON = () => {
       axios.post("/page_current",{
         "page":"LESSONS"
       })
+      axios.post("/state_choosen",{
+        "state": "don't",
+      })
   }, []);
   if (state_get_data) {
     if (!state_choosen_lesson) {

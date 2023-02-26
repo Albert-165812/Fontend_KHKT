@@ -70,7 +70,7 @@ const Lesson = (id_curr) => {
         $(boxLamquen).appendTo("#box_display_lesson");
         Lamquen.map((i, index) => {
           var Lamquen = `
-            <div class="element_lamquen" style="padding:4px">
+            <div class="element_lamquen" name="element_lamquen" style="padding:4px">
               <img class="element_lamquen-img" style="width:160px; object-fit:center;height:100px" src=""/>
               <span class="element_lamquen-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:2.4rem" ></span>
             </div>
@@ -92,13 +92,16 @@ const Lesson = (id_curr) => {
           var Danhvan = `
             <div class="element_Danhvan" style="padding:4px">
               <img class="element_Danhvan-img" style="width:160px; object-fit:center;height:100px" src=""/>
-              <span class="element_Danhvan-text" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:2.4rem" ></span>
+              <span class="element_Danhvan-text" name="" style="width:100%;display:flex;justify-content:center;align-items:center;font-size:2.4rem" ></span>
             </div>
             `;
           $("#item_Danhvan").append(Danhvan);
           document.getElementsByClassName("element_Danhvan-text")[
             index
           ].innerHTML = i["text"];
+          document.getElementsByClassName("element_Danhvan-text")[
+            index
+          ].title = i["text_cach_danhvan"];
           document.getElementsByClassName("element_Danhvan-img")[index].src = "/src/image"+
             i["img"].slice(85,i["img"].length);
         });

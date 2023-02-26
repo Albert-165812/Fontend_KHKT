@@ -11,6 +11,9 @@ const PAGE_HOME = () => {
     axios.post("/page_current",{
       "page":"HOME"
     })
+    axios.post("/state_choosen",{
+      "state": "don't",
+    })
     TexttoSpeech("Chào bạn đây là trang chủ");
   }, []);
   return (
